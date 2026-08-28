@@ -5,8 +5,10 @@ import cc.hongz.ztools.setting.dialect.Props;
 import cc.hongz.ztools.setting.dialect.PropsUtil;
 import lombok.Data;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Issue3008 数组字段赋值")
 public class Issue3008Test {
 
 	/**
@@ -14,6 +16,7 @@ public class Issue3008Test {
 	 * 修复见：BeanUtil.setFieldValue
 	 */
 	@Test
+	@DisplayName("数组字段追加赋值")
 	public void toBeanTest() {
 		final Props props = PropsUtil.get("issue3008");
 		final MyUser user = props.toBean(MyUser.class, "person");

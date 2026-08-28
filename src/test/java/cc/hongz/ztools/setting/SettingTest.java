@@ -3,6 +3,7 @@ package cc.hongz.ztools.setting;
 import cc.hongz.ztools.core.lang.Console;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,9 +11,11 @@ import org.junit.jupiter.api.Test;
  *
  * @author Looly
  */
+@DisplayName("Setting 设置")
 public class SettingTest {
 
 	@Test
+	@DisplayName("读取分组配置与变量替换")
 	public void settingTest() {
 		//noinspection MismatchedQueryAndUpdateOfCollection
 		Setting setting = new Setting("test.setting", true);
@@ -35,6 +38,7 @@ public class SettingTest {
 
 	@Test
 	@Disabled
+	@DisplayName("绝对路径读取")
 	public void settingTestForAbsPath() {
 		//noinspection MismatchedQueryAndUpdateOfCollection
 		Setting setting = new Setting("d:\\excel-plugin\\other.setting", true);
@@ -42,6 +46,7 @@ public class SettingTest {
 	}
 
 	@Test
+	@DisplayName("自定义分组写入读取")
 	public void settingTestForCustom() {
 		Setting setting = new Setting();
 
@@ -60,6 +65,7 @@ public class SettingTest {
 	 * 测试写出是否正常
 	 */
 	@Test
+	@DisplayName("持久化写出")
 	public void storeTest() {
 		Setting setting = new Setting("test.setting");
 		setting.set("testKey", "testValue");

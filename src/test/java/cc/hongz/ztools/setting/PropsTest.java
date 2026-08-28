@@ -7,6 +7,7 @@ import cc.hongz.ztools.setting.dialect.Props;
 import lombok.Data;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Looly
  *
  */
+@DisplayName("Props Properties 配置")
 public class PropsTest {
 
 	@BeforeEach
@@ -30,6 +32,7 @@ public class PropsTest {
 	}
 
 	@Test
+	@DisplayName("读取 properties 配置")
 	public void propTest() {
 		//noinspection MismatchedQueryAndUpdateOfCollection
 		final Props props = new Props("test.properties");
@@ -42,6 +45,7 @@ public class PropsTest {
 
 	@Test
 	@Disabled
+	@DisplayName("绝对路径读取")
 	public void propTestForAbsPAth() {
 		//noinspection MismatchedQueryAndUpdateOfCollection
 		final Props props = new Props("d:/test.properties");
@@ -53,6 +57,7 @@ public class PropsTest {
 	}
 
 	@Test
+	@DisplayName("转换为嵌套 Bean")
 	public void toBeanTest() {
 		final Props props = Props.getProp("to_bean_test.properties");
 
@@ -73,6 +78,7 @@ public class PropsTest {
 	}
 
 	@Test
+	@DisplayName("无前缀转换为 Bean")
 	public void toBeanWithNullPrefixTest(){
 		final Props configProp = new Props();
 

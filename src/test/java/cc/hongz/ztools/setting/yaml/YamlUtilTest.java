@@ -5,13 +5,16 @@ import cc.hongz.ztools.core.lang.Dict;
 import cc.hongz.ztools.core.util.CharsetUtil;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+@DisplayName("YamlUtil YAML 工具")
 public class YamlUtilTest {
 
 	@Test
+	@DisplayName("按路径加载 YAML")
 	public void loadByPathTest() {
 		final Dict result = YamlUtil.loadByPath("test.yaml");
 
@@ -24,6 +27,7 @@ public class YamlUtilTest {
 
 	@Test
 	@Disabled
+	@DisplayName("写出 YAML")
 	public void dumpTest() {
 		final Dict dict = Dict.create()
 				.set("name", "hutool")
