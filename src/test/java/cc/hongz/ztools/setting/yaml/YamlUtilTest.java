@@ -3,7 +3,7 @@ package cc.hongz.ztools.setting.yaml;
 import cc.hongz.ztools.core.io.FileUtil;
 import cc.hongz.ztools.core.lang.Dict;
 import cc.hongz.ztools.core.util.CharsetUtil;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,28 +13,28 @@ import java.util.List;
 @DisplayName("YamlUtil YAML 工具")
 public class YamlUtilTest {
 
-	@Test
-	@DisplayName("按路径加载 YAML")
-	public void loadByPathTest() {
-		final Dict result = YamlUtil.loadByPath("test.yaml");
+    @Test
+    @DisplayName("按路径加载 YAML")
+    public void loadByPathTest() {
+        final Dict result = YamlUtil.loadByPath("test.yaml");
 
-		assertEquals("John", result.getStr("firstName"));
+        assertEquals("John", result.getStr("firstName"));
 
-		final List<Integer> numbers = result.getByPath("contactDetails.number");
-		assertEquals(123456789, (int) numbers.get(0));
-		assertEquals(456786868, (int) numbers.get(1));
-	}
+        final List<Integer> numbers = result.getByPath("contactDetails.number");
+        assertEquals(123456789, (int) numbers.get(0));
+        assertEquals(456786868, (int) numbers.get(1));
+    }
 
-	@Test
-	@Disabled
-	@DisplayName("写出 YAML")
-	public void dumpTest() {
-		final Dict dict = Dict.create()
-				.set("name", "hutool")
-				.set("count", 1000);
+    @Test
+    @Disabled
+    @DisplayName("写出 YAML")
+    public void dumpTest() {
+        final Dict dict = Dict.create()
+                .set("name", "hutool")
+                .set("count", 1000);
 
-		YamlUtil.dump(
-				dict
-				, FileUtil.getWriter("d:/test/dump.yaml", CharsetUtil.CHARSET_UTF_8, false));
-	}
+        YamlUtil.dump(
+                dict,
+                FileUtil.getWriter("d:/test/dump.yaml", CharsetUtil.CHARSET_UTF_8, false));
+    }
 }

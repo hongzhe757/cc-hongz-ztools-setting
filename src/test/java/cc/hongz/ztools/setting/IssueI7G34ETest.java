@@ -12,19 +12,19 @@
 
 package cc.hongz.ztools.setting;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("IssueI7G34E BOM 读取")
 public class IssueI7G34ETest {
 
-	@Test
-	@DisplayName("读取带 BOM 的设置文件")
-	public void readWithBomTest() {
-		final Setting setting = new Setting("test_with_bom.setting");
-		final String s = setting.get("line1", "key1");
+    @Test
+    @DisplayName("读取带 BOM 的设置文件")
+    public void readWithBomTest() {
+        final Setting setting = new Setting("test_with_bom.setting");
+        final String s = setting.get("line1", "key1");
 
-		assertEquals("value1", s);
-	}
+        assertEquals("value1", s);
+    }
 }

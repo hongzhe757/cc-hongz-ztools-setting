@@ -1,75 +1,75 @@
 package cc.hongz.ztools.setting;
 
 import cc.hongz.ztools.core.lang.Console;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * Setting单元测试
+ * Setting单元测试。
  *
  * @author Looly
  */
 @DisplayName("Setting 设置")
 public class SettingTest {
 
-	@Test
-	@DisplayName("读取分组配置与变量替换")
-	public void settingTest() {
-		//noinspection MismatchedQueryAndUpdateOfCollection
-		Setting setting = new Setting("test.setting", true);
+    @Test
+    @DisplayName("读取分组配置与变量替换")
+    public void settingTest() {
+        //noinspection MismatchedQueryAndUpdateOfCollection
+        Setting setting = new Setting("test.setting", true);
 
-		String driver = setting.getByGroup("driver", "demo");
-		assertEquals("com.mysql.jdbc.Driver", driver);
+        String driver = setting.getByGroup("driver", "demo");
+        assertEquals("com.mysql.jdbc.Driver", driver);
 
-		//本分组变量替换
-		String user = setting.getByGroup("user", "demo");
-		assertEquals("rootcom.mysql.jdbc.Driver", user);
+        //本分组变量替换
+        String user = setting.getByGroup("user", "demo");
+        assertEquals("rootcom.mysql.jdbc.Driver", user);
 
-		//跨分组变量替换
-		String user2 = setting.getByGroup("user2", "demo");
-		assertEquals("rootcom.mysql.jdbc.Driver", user2);
+        //跨分组变量替换
+        String user2 = setting.getByGroup("user2", "demo");
+        assertEquals("rootcom.mysql.jdbc.Driver", user2);
 
-		//默认值测试
-		String value = setting.getStr("keyNotExist", "defaultTest");
-		assertEquals("defaultTest", value);
-	}
+        //默认值测试
+        String value = setting.getStr("keyNotExist", "defaultTest");
+        assertEquals("defaultTest", value);
+    }
 
-	@Test
-	@Disabled
-	@DisplayName("绝对路径读取")
-	public void settingTestForAbsPath() {
-		//noinspection MismatchedQueryAndUpdateOfCollection
-		Setting setting = new Setting("d:\\excel-plugin\\other.setting", true);
-		Console.log(setting.getStr("a"));
-	}
+    @Test
+    @Disabled
+    @DisplayName("绝对路径读取")
+    public void settingTestForAbsPath() {
+        //noinspection MismatchedQueryAndUpdateOfCollection
+        Setting setting = new Setting("d:\\excel-plugin\\other.setting", true);
+        Console.log(setting.getStr("a"));
+    }
 
-	@Test
-	@DisplayName("自定义分组写入读取")
-	public void settingTestForCustom() {
-		Setting setting = new Setting();
+    @Test
+    @DisplayName("自定义分组写入读取")
+    public void settingTestForCustom() {
+        Setting setting = new Setting();
 
-		setting.setByGroup("user", "group1", "root");
-		setting.setByGroup("user", "group2", "root2");
-		setting.setByGroup("user", "group3", "root3");
-		setting.set("user", "root4");
+        setting.setByGroup("user", "group1", "root");
+        setting.setByGroup("user", "group2", "root2");
+        setting.setByGroup("user", "group3", "root3");
+        setting.set("user", "root4");
 
-		assertEquals("root", setting.getByGroup("user", "group1"));
-		assertEquals("root2", setting.getByGroup("user", "group2"));
-		assertEquals("root3", setting.getByGroup("user", "group3"));
-		assertEquals("root4", setting.get("user"));
-	}
+        assertEquals("root", setting.getByGroup("user", "group1"));
+        assertEquals("root2", setting.getByGroup("user", "group2"));
+        assertEquals("root3", setting.getByGroup("user", "group3"));
+        assertEquals("root4", setting.get("user"));
+    }
 
-	/**
-	 * 测试写出是否正常
-	 */
-	@Test
-	@DisplayName("持久化写出")
-	public void storeTest() {
-		Setting setting = new Setting("test.setting");
-		setting.set("testKey", "testValue");
+    /**
+     * 测试写出是否正常。
+     */
+    @Test
+    @DisplayName("持久化写出")
+    public void storeTest() {
+        Setting setting = new Setting("test.setting");
+        setting.set("testKey", "testValue");
 
-		setting.store();
-	}
+        setting.store();
+    }
 }
