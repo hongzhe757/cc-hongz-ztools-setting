@@ -15,7 +15,7 @@
     <packaging>jar</packaging>
 
     <name>cc-hongz-ztools-setting</name>
-    <description>配置文件增强模块（Properties/Setting/YAML，对齐 hutool-setting）</description>
+    <description>配置文件增强模块（Properties/Setting/YAML）</description>
 
     <dependencies>
         <!-- cc-hongz-ztools-core：核心工具 -->
